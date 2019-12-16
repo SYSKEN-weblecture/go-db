@@ -7,6 +7,10 @@ Makefile読めばだいたい分かる
 ## migration tool 環境構築
 gooseというgo製のマイグレーションツール使います。
 
+gooseとmysqlを用意しましょう。
+
+※ "mysqlはコンテナ内から叩く"でも代用できるので、各自調整してください。
+
 ### mac
 macはterminalで以下のコマンドを実行すれば入る。
 ```sh
@@ -16,7 +20,9 @@ $ make init/mac
 このmakeの中身はMakefile読めば分かるけど↓の通り
 ```sh
 $ brew install golang-migrate
+$ brew install mysql
 $ migrate --version
+$ mysql --version
 ```
 
 ### manjaroとか
@@ -33,4 +39,7 @@ $ make init/manjaro
 $ curl -L https://github.com/golang-migrate/migrate/releases/download/v3.2.0/migrate.linux-amd64.tar.gz | tar xvz
 $ mv migrate.linux-amd64 migrate
 $ migrate --version
+$ sudo pacman -Syyu
+$ sudo pacman -S mariadb
+$ sudo sysctl mysqld
 ```
